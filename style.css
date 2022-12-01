@@ -1,0 +1,97 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: no-repeat linear-gradient(to top, #000000d7, #0000001e), url("https://img.freepik.com/free-vector/injured-patient-with-broken-arm-visiting-doctor_107791-13358.jpg?w=996&t=st=1669918226~exp=1669918826~hmac=66dfbb5d7be8fd74428a0e974686ad42cd882d8f48dc210831f55c7ec705f3e8") center / cover; */
+}
+
+.game-title {
+    font-size: 60px;
+    margin: 0;
+    text-decoration: none;
+    color: white;
+    text-shadow: 0px 3px 0px rgb(12, 68, 131);
+    font-family: 'Japan Wave';
+    font-weight: bolder;
+    animation: 2s cubic-bezier(0.42, 0, 0.58, 1.49) gameTitleAnim;
+}
+
+@keyframes gameTitleAnim {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+#main-menu-video {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    opacity: 1;
+    /* height: 100%; */
+}
+
+.main-menu {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.main-menu-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    font-size: 40px;
+    text-decoration: none;
+    color: rgb(12, 68, 131);
+    text-shadow: 0px 3px 0px white;
+    font-family: 'Japan Wave';
+    font-weight: bolder;
+    transition: all .5s;
+    animation-name: mainMenuBtnAnim;
+    animation-duration: 5s;
+    animation-delay: 3s;
+}
+
+@keyframes mainMenuBtnAnim {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    color: white;
+    text-shadow: 0px 3px 0px rgb(12, 68, 131);
+}
+
+.play-btn {
+    font-size: 70px;
+    text-shadow: 0px 5px 0px white;
+}
