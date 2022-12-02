@@ -1,4 +1,4 @@
-const MAX_PROBLEM = 2;
+const MAX_PROBLEM = 4;
 
 const answer_buttons = document.getElementsByClassName("answer_button");
 const next_buttons = document.getElementsByClassName("next_buttons");
@@ -62,11 +62,14 @@ function nextDialogue() {
 
     } else {
         const next = document.getElementsByClassName("next")[0];
-        console.log(next);
         hud_question.firstChild.removeChild(next);
 
         etape++;
-        loadStage(etape);
+        if (dataProblem["etape" + etape] == undefined) {
+            randomProblem();
+        } else {
+            loadStage(etape);
+        }
     }
 }
 
@@ -99,6 +102,7 @@ function showText(data) {
 }
 
 function showButtons(data, correctButton) {
+    scoreAlreadyChanged= false;
     // data.splice(data.length()-1,1);
     for (obj in data) {
         if (obj == "correct") continue;
@@ -107,9 +111,10 @@ function showButtons(data, correctButton) {
         newDiv.id = obj;
         newDiv.textContent = data[obj];
         if (obj == correctButton) {
-            newDiv.addEventListener('click', () => positiveScore());
+            newDiv.addEventListener('click', () => positiveScore(newDiv));
+            
         } else {
-            newDiv.addEventListener('click', () => negativeScore());
+            newDiv.addEventListener('click', () => negativeScore(newDiv));
         }
         hud_bottom.appendChild(newDiv);
     }
@@ -118,9 +123,7 @@ function showButtons(data, correctButton) {
 
 function affichReponses() {
     const listnodes = hud_bottom.childNodes;
-    console.log(listnodes);
     listnodes.forEach(e => {
-        console.log(e);
         if (e.id == correct) {
             e.style.backgroundColor = "green";
         } else {
@@ -132,16 +135,24 @@ function affichReponses() {
     }, 2000);
 }
 
-function positiveScore() {
+var scoreAlreadyChanged= false;
+
+function positiveScore(newDiv) {
+    if (scoreAlreadyChanged) return;
+    scoreAlreadyChanged = true;
+    newDiv.removeEventListener('click', () => negativeScore(newDiv));
     score++;
-    scoreSpan.textContent = score;
+    scoreSpan.textContent = "Score: " + score;
 
     affichReponses();
 }
 
-function negativeScore() {
+function negativeScore(newDiv) {
+    if (scoreAlreadyChanged) return;
+    scoreAlreadyChanged = true;
+    newDiv.removeEventListener('click', () => negativeScore(newDiv));
     score--;
-    scoreSpan.textContent = score;
+    scoreSpan.textContent = "Score: " + score;
 
     affichReponses();
 }
@@ -167,14 +178,16 @@ function clear() {
 
 function randomProblem() {
     var number = Math.round(Math.random() * (MAX_PROBLEM - 1)) + 1;
-    if (previousProblems.length == MAX_PROBLEM - 1) {
+    if (previousProblems.length == MAX_PROBLEM) {
         console.log("all problem solved"); //TODO
     }
-    while (previousProblems.includes(number)) {
-        number = Math.round(Math.random() * (MAX_PROBLEM - 1)) + 1;
+    else {
+        while (previousProblems.includes(number)) {
+            number = Math.round(Math.random() * (MAX_PROBLEM - 1)) + 1;
+        }
+        console.log(number);
+        clear();
+        loadProblem(number);
+        previousProblems.push(number);
     }
-    console.log(number);
-    clear();
-    loadProblem(number);
-    previousProblems.push(number);
 }
