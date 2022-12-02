@@ -241,6 +241,10 @@ body {
     color: white;
 }
 
+.patient-talk-box {
+    z-index: 99;
+}
+
 .question-box {
     width: auto;
     max-width: 80%;
@@ -260,5 +264,4 @@ body {
     font-family: 'Montserrat';
     font-weight: 600;
     animation: showMsgBox .5s;
-    z-index: 99;
 }
