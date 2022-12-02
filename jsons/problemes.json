@@ -1,115 +1,114 @@
-  {
-  "prob1": {
+{
+    "prob1": {
+        "etape1": {
+            "type": "text",
+            "text": {
+                "dialogue1": {
+                    "patient": "Bonjour docteur! J'ai une question "
+                },
+                "dialogue2": {
+                    "patient": "Quel est la difference entre le SIDA et le HIV?"
+                }
+            }
+        },
+        "etape2": {
+            "type": "choice",
+            "choices": {
+                "1": "Le VIH s’agit d’un rétrovirus qui infecte les cellules du système immunitaire de l’être humain et détruit ou dérègle leur fonctionnement. Cependant, le SIDA décrit l’ensemble des symptômes et des infections liés à une déficience acquise du système immunitaire",
+                "2": "Le VIH décrit l’ensemble des symptômes et des infections liés à une déficience acquise du système immunitaire. Cependant, le SIDA  s’agit d’un rétrovirus qui infecte les cellules du système immunitaire de l’être humain et détruit ou dérègle leur fonctionnement"
+            },
+            "correct": "1"
+        },
+        "etape3": {
+            "type": "text",
+            "text": {
+                "dialogue1": {
+                    "patient": "Merci docteur, ca m'a clarifie les choses !"
+                }
+            }
+        }
+    },
+    "prob2": {
+        "etape1": {
+            "type": "text",
+            "text": {
+                "dialogue1": {
+                    "docteur": "Bonjour! Vous aurez des questions que je peux repondre concernant le SIDA ?"
+                },
+                "dialogue2": {
+                    "patient": "Oui docteur, je voulais savoir combien de temps faut-il à une personne infectée par le VIH pour développer le SIDA?"
+                }
+            }
+        },
+        "etape2": {
+            "type": "choice",
+            "choices": {
+                "1": "1 a 2 ans ",
+                "2": "entre 4 et 5 ans",
+                "3": "environs 8 ans",
+                "4": "plus de 10 ans"
+            },
+            "correct": "3"
+        },
+        "etape3": {
+            "type": "text",
+            "text": {
+                "dialogue1": {
+                    "patient": "Aah daccord !"
+                },
+                "dialogue2": {
+                    "patient": "Et au bout de combien de temps on risque la mort ?"
+                },
+                "dialogue3": {
+                    "docteur": "Les patients ayant commencé leur traitement rapidement après avoir contracté l'infection vivraient en moyenne jusqu'à:"
+                }
+            }
+        },
+        "etape4": {
+            "type": "choice",
+            "choices": {
+                "1": "45 ans ",
+                "2": "60 ans",
+                "3": "75ans",
+                "4": "90 ans"
+            },
+            "correct": "3"
+        },
+        "etape5": {
+            "type": "text",
+            "text": {
+                "dialogue1": {
+                    "docteur": "En effet, plus la personne atteinte du VIH commence le traitement prescrit tôt, plus son espérance de vie s'allonge"
+                },
+                "dialogue2": {
+                    "patient": "Alors, je comprends de ca qu'il faut faire des tests regulierement?"
+                },
+                "dialogue3": {
+                    "docteur": "C'est correct oui, un test doit etre fait si une prise du risque a eu lieu. Par contre, un delai de ..... doit s'etre ecoule de cette derniere "
+                }
+            }
+        },
+        "etape6": {
+            "type": "choice",
+            "choices": {
+                "1": "un delai d'une semaine",
+                "2": "un delai de 15 jours",
+                "3": "un delai d'un mois",
+                "4": "un delai de 3 mois"
+            },
+            "correct": "4"
+        },
+        "etape7": {
+            "type": "text",
+            "text": {
+                "dialogue1": {
+                    "docteur": "Si le test rapide est positif, il doit être confirmé par un test de dépistage classique du VIH (par prise de sang), réalisé dans un laboratoire"
+                },
+                "dialogue2": {
+                    "patient": "Ca m'a enlevé les doutes que j'avais, merci docteur"
+                }
 
-    "etape1": {
-      "type":"text",
-      "text": {
-        "dialogue1": {
-          "patient": "Bonjour docteur! J'ai une question "
-        },
-        "dialogue2":{
-          "patient": "Quel est la difference entre le SIDA et le HIV?"
+            }
         }
-      }
-    },
-    "etape2": {
-      "type": "choice",
-      "choices": {
-        "1": "Le VIH s’agit d’un rétrovirus qui infecte les cellules du système immunitaire de l’être humain et détruit ou dérègle leur fonctionnement. Cependant, le SIDA décrit l’ensemble des symptômes et des infections liés à une déficience acquise du système immunitaire",
-        "2": "Le VIH décrit l’ensemble des symptômes et des infections liés à une déficience acquise du système immunitaire. Cependant, le SIDA  s’agit d’un rétrovirus qui infecte les cellules du système immunitaire de l’être humain et détruit ou dérègle leur fonctionnement"
-      },
-      "correct": "1"
-    },
-    "etape3": {
-      "type" : "text",
-      "text": {
-        "dialogue1": {
-          "patient": "Merci docteur, ca m'a clarifie les choses !"
-        }
-      }
     }
-  },
-  "prob2": {
-    "etape1": {
-      "type":"text",
-      "text": {
-        "dialogue1": {
-          "docteur": "Bonjour! Vous aurez des questions que je peux repondre concernant le SIDA ?"
-        },
-        "dialogue2":{
-          "patient": "Oui docteur, je voulais savoir combien de temps faut-il à une personne infectée par le VIH pour développer le SIDA?"
-        }
-      }
-    },
-    "etape2": {
-      "type": "choice",
-      "choices": {
-        "1": "1 a 2 ans ",
-        "2": "entre 4 et 5 ans",
-        "3": "environs 8 ans",
-        "4": "plus de 10 ans"
-      },
-      "correct": "3"
-    },
-    "etape3": {
-      "type" : "text",
-      "text": {
-        "dialogue1": {
-          "patient": "Aah daccord !"
-        },
-        "dialogue2":{
-          "patient": "Et au bout de combien de temps on risque la mort ?"
-        },
-        "dialogue3":{
-          "docteur": "Les patients ayant commencé leur traitement rapidement après avoir contracté l'infection vivraient en moyenne jusqu'à:"
-        }
-      }
-    },
-    "etape4": {
-      "type": "choice",
-      "choices": {
-        "1": "45 ans ",
-        "2": "60 ans",
-        "3": "75ans",
-        "4": "90 ans"
-      },
-      "correct": "3"
-    },
-    "etape5": {
-      "type" : "text",
-      "text": {
-        "dialogue1": {
-          "docteur": "En effet, plus la personne atteinte du VIH commence le traitement prescrit tôt, plus son espérance de vie s'allonge"
-        },
-        "dialogue2":{
-          "patient": "Alors, je comprends de ca qu'il faut faire des tests regulierement?"
-        },
-        "dialogue3":{
-          "docteur": "C'est correct oui, un test doit etre fait si une prise du risque a eu lieu. Par contre, un delai de ..... doit s'etre ecoule de cette derniere "
-        }
-      }
-    },
-    "etape6": {
-      "type": "choice",
-      "choices": {
-        "1": "un delai d'une semaine",
-        "2": "un delai de 15 jours",
-        "3": "un delai d'un mois",
-        "4": "un delai de 3 mois"
-      },
-      "correct": "4"
-    },
-    "etape7": {
-      "type" : "text",
-      "text": {
-        "dialogue1": {
-          "docteur": "Si le test rapide est positif, il doit être confirmé par un test de dépistage classique du VIH (par prise de sang), réalisé dans un laboratoire"
-        },
-        "dialogue2": {
-          "patient": "Ca m'a enlevé les doutes que j'avais, merci docteur"
-        }
-        
-      }
-    }
-  }
 }

@@ -9,6 +9,16 @@ body {
     margin: 0;
 }
 
+@font-face {
+    font-family: Japan Wave;
+    src: url('./assets/fonts/japan-wave.ttf');
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url('./assets/fonts/montserrat.ttf');
+}
+
 .main {
     width: 100%;
     height: 100%;
@@ -106,6 +116,7 @@ body {
     position: absolute;
     bottom: 0px;
     width: 100%;
+    height: 205px;
     z-index: 3;
 }
 
@@ -120,7 +131,7 @@ body {
 
 .hud-btn {
     width: 50px;
-    aspect-ratio: 1;
+    height: 50px;
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     border-radius: 15px;
@@ -169,15 +180,31 @@ body {
     height: 90%;
     position: absolute;
     bottom: 0;
-    animation: 7s patientArriving;
+    animation: patientWalking 7s;
 }
 
-@keyframes patientArriving {
+.patient-talking {
+    animation-name: patientTalking;
+    animation-duration: .5s;
+    animation-iteration-count: 4;
+    animation-direction: alternate;
+}
+
+@keyframes patientWalking {
     from {
         transform: translateX(-1366px);
     }
     to {
         transform: translateX(0);
+    }
+}
+
+@keyframes patientTalking {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-20px);
     }
 }
 
@@ -193,10 +220,12 @@ body {
 .answer-box {
     width: 250px;
     height: 150px;
+    margin: 0px 10px;
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.7);
+    border: solid 3px rgba(255, 255, 255, 0.7);
     border-radius: 30px;
-    box-shadow: 0px 15px 25px rgba(196, 80, 80, 0.2);
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
     text-decoration: none;
     transition: all .2s;
     padding: 20px;
@@ -204,22 +233,90 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    color: black;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    animation: showMsgBox .5s;
+}
+
+@keyframes showMsgBox {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 .answer-box:hover {
     transform: scale(1.05);
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.6);
 }
 
-.answer-box:focus {
-    border: solid 2px rgb(0, 149, 175);
-}
-
-.answer-box:focus .answer-box p {
+.answer-box-active {
+    border: solid 3px rgb(0, 149, 175);
+    background-color: rgb(0, 149, 175, 0.7);
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.6);
     color: white;
 }
 
-.answer-box p {
-    color: black;
+.patient-talk-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 99;
+}
+
+.question-box {
+    width: auto;
+    max-width: 80%;
+    height: 100px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    transition: all .2s;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
     font-family: 'Montserrat';
     font-weight: 600;
+    animation: showMsgBox .5s;
+}
+
+.score {
+    color: white;
+    font-family: 'Montserrat';
+    text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.next {
+    backdrop-filter: blur(10px);
+    border: solid 3px rgb(0, 149, 175);
+    background-color: rgb(0, 149, 175, 0.7);
+    width: auto;
+    height: 35px;
+    padding: 0px 10px;
+    height: 35px;
+    border-radius: 20px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-family: 'Montserrat';
+    margin-top: 15px;
+    transition: all .5s;
+}
+
+.next:hover {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 1);
+    color: rgb(0, 149, 175);
 }
