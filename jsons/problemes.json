@@ -33,7 +33,7 @@
             "type": "text",
             "text": {
                 "dialogue1": {
-                    "docteur": "Bonjour! Vous aurez des questions que je peux repondre concernant le SIDA ?"
+                    "docteur": "Bonjour! Vous avez des questions auquelle je peux repondre concernant le SIDA ?"
                 },
                 "dialogue2": {
                     "patient": "Oui docteur, je voulais savoir combien de temps faut-il à une personne infectée par le VIH pour développer le SIDA?"
@@ -81,7 +81,7 @@
                     "docteur": "En effet, plus la personne atteinte du VIH commence le traitement prescrit tôt, plus son espérance de vie s'allonge"
                 },
                 "dialogue2": {
-                    "patient": "Alors, je comprends de ca qu'il faut faire des tests regulierement?"
+                    "patient": "Alors, il faut faire des tests regulierement?"
                 },
                 "dialogue3": {
                     "docteur": "C'est correct oui, un test doit etre fait si une prise du risque a eu lieu. Par contre, un delai de ..... doit s'etre ecoule de cette derniere "
@@ -108,6 +108,67 @@
                     "patient": "Ca m'a enlevé les doutes que j'avais, merci docteur"
                 }
 
+            }
+        }
+    },
+    "prob3": {
+        "etape1": {
+            "type": "text",
+            "text": {
+                "dialogue1":{
+                    "patient": "Bonjour docteur, j'ai une question pour vous, je me suis coupé le bras et mon sang et entré en contact bref avec celui d'une autre personne, est ce que je dois faire un test de dépistage VIH ?"
+                }
+            }
+        },
+        "etape2": {
+            "type": "choice",
+            "choices":{
+                "1": "oui",
+                "2": "non"
+            },
+            "correct": "2"
+        },
+        "etape3": {
+            "type":"text",
+            "text": {
+                "dialogue1": {
+                    "patient": "Pour que le risque de transmition soit présent il faudrait un contact prolongé entre deux plaies ouverte et sanglantes. Cepandant en cas de d'inquiètude aller vous faire dépister"
+                }
+            }
+        }
+    },
+    "prob4":{
+        "etape1":{
+            "type":"text",
+            "text":{
+                "dialogue1":{
+                    "patient": "Bonjour docteur, je m'inquiète je me suis fait piqué par une seringue pendant un concert"
+                },
+                "dialogue2":{
+                    "docteur": "Très bien qu'est ce qui vous inquiète ?"
+                },
+                "dialogue3":{
+                    "patient": "J'ai entendu dire qu'une piqure pourrait transmettre des IST, nottament le vih?"
+                }
+            }
+        },
+        "etape2":{
+            "type":"choice",
+            "choices":{
+                "1": "C'est vrai",
+                "2": "C'est faux"
+            },
+            "correct":"1"
+        },
+        "etape3":{
+            "type": "text",
+            "text": {
+                "dialogue1":{
+                    "docteur":"Oui c'est vrai, mais seulement si la seringue à servit à une injection ou prélèvement sanguin"
+                },
+                "dialogue2":{
+                    "patient": "Je sais pas du tout a quoi elle a servit, dans le doute je préfère faire un test"
+                }
             }
         }
     }
