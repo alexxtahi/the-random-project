@@ -6,6 +6,8 @@ const parent = document.getElementsByClassName("interactions")[0];
 const hud_bottom = document.getElementsByClassName("hud-bottom")[0];
 const hud_question = document.getElementsByClassName("patient-talk-box")[0];
 
+const result = document.getElementsByClassName("result-black-bg")[0];
+
 const scoreSpan = document.getElementsByClassName("score")[0].firstChild;
 
 var previousProblems = []; // une liste des problemes qui ont été rencontré
@@ -19,6 +21,8 @@ var dialogueEtape = 1;
 var correct;
 
 var score = 0;
+
+result.style.visibility = "hidden";
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET", '../jsons/problemes.json', false);
@@ -179,7 +183,9 @@ function clear() {
 function randomProblem() {
     var number = Math.round(Math.random() * (MAX_PROBLEM - 1)) + 1;
     if (previousProblems.length == MAX_PROBLEM) {
-        console.log("all problem solved"); //TODO
+        const spanpoints = document.getElementsByClassName("result-points")[0];
+        spanpoints.textContent = score + "0";
+        result.style.visibility = "visible";
     }
     else {
         while (previousProblems.includes(number)) {
