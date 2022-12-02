@@ -23,7 +23,7 @@ var score = 0;
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET", '../jsons/problemes.json', false);
 xmlhttp.send();
-if(xmlhttp.status==200){
+if (xmlhttp.status == 200) {
     bigdata = JSON.parse(xmlhttp.responseText);
 }
 setTimeout(() => {
@@ -32,23 +32,22 @@ setTimeout(() => {
 
 function loadProblem(id) {
     etape = 1;
-    dataProblem = bigdata["prob"+id];
+    dataProblem = bigdata["prob" + id];
     // console.log(dataProblem);
     loadStage(etape);
 }
 
 function loadStage(int) {
-    const stages = dataProblem["etape"+int];
+    const stages = dataProblem["etape" + int];
     // console.log(stages);
     if (stages == undefined) return;
-    else if (stages.type == "text"){
+    else if (stages.type == "text") {
         etape_courante = stages.text;
         dialogueEtape = 1;
         // console.log(etape_courante["dialogue" + dialogueEtape]);
         showText(etape_courante["dialogue" + dialogueEtape]);
 
-    }
-    else if (stages.type == "choice"){
+    } else if (stages.type == "choice") {
         etape_courante = stages.choices;
         correct = stages.correct;
         showButtons(etape_courante, stages.correct);
@@ -57,46 +56,45 @@ function loadStage(int) {
 
 function nextDialogue() {
     dialogueEtape++;
-    if (etape_courante["dialogue" + dialogueEtape ]  != undefined){
+    if (etape_courante["dialogue" + dialogueEtape] != undefined) {
         clear();
         showText(etape_courante["dialogue" + dialogueEtape]);
 
-    }
-    else {
-        const next = document.getElementsByClassName("next")[0]; 
+    } else {
+        const next = document.getElementsByClassName("next")[0];
         console.log(next);
         hud_question.removeChild(next);
-        
+
         etape++;
         loadStage(etape);
     }
 }
-function showText(data){
+
+function showText(data) {
     if (data.docteur != undefined) {
         const newDiv = document.createElement("div");
         newDiv.classList.add("question-box");
         newDiv.textContent = data.docteur;
-        
+
         const buttonNext = document.createElement("a");
         buttonNext.classList.add("next");
-        buttonNext.textContent= ">";
-        buttonNext.addEventListener('click', () => nextDialogue() );
+        buttonNext.textContent = "Suivant";
+        buttonNext.addEventListener('click', () => nextDialogue());
 
         hud_question.appendChild(newDiv);
-        hud_question.appendChild(buttonNext);
-    }
-    else if (data.patient != undefined) {
+        newDiv.appendChild(buttonNext);
+    } else if (data.patient != undefined) {
         const newDiv = document.createElement("div");
         newDiv.classList.add("question-box");
         newDiv.textContent = data.patient;
-        
+
         const buttonNext = document.createElement("a");
         buttonNext.classList.add("next");
-        buttonNext.textContent= ">";
-        buttonNext.addEventListener('click', () => nextDialogue() );
+        buttonNext.textContent = "Suivant";
+        buttonNext.addEventListener('click', () => nextDialogue());
 
         hud_question.appendChild(newDiv);
-        hud_question.appendChild(buttonNext);
+        newDiv.appendChild(buttonNext);
     }
 }
 
@@ -108,39 +106,39 @@ function showButtons(data, correctButton) {
         newDiv.classList.add("answer-box");
         newDiv.id = obj;
         newDiv.textContent = data[obj];
-        if (obj == correctButton){
-            newDiv.addEventListener('click', ()=> positiveScore() );
-        }
-        else {
-            newDiv.addEventListener('click', ()=> negativeScore() );
+        if (obj == correctButton) {
+            newDiv.addEventListener('click', () => positiveScore());
+        } else {
+            newDiv.addEventListener('click', () => negativeScore());
         }
         hud_bottom.appendChild(newDiv);
     }
 
 }
-function affichReponses(){
+
+function affichReponses() {
     const listnodes = hud_bottom.childNodes;
-    console.log(listnodes); 
+    console.log(listnodes);
     listnodes.forEach(e => {
         console.log(e);
-        if (e.id == correct){
+        if (e.id == correct) {
             e.style.backgroundColor = "green";
-        } 
-        else {
+        } else {
             e.style.backgroundColor = "red";
         }
     });
     setTimeout(() => {
-    nextStage();
+        nextStage();
     }, 2000);
 }
 
 function positiveScore() {
     score++;
     scoreSpan.textContent = score;
-    
+
     affichReponses();
 }
+
 function negativeScore() {
     score--;
     scoreSpan.textContent = score;
@@ -148,33 +146,32 @@ function negativeScore() {
     affichReponses();
 }
 
-function nextStage(){
+function nextStage() {
     clear();
     etape++;
     if (dataProblem["etape" + etape] == undefined) {
         randomProblem();
-    }
-    else {
+    } else {
         loadStage(etape);
     }
 }
 
-function clear(){
+function clear() {
     while (hud_bottom.firstChild) {
         hud_bottom.removeChild(hud_bottom.firstChild);
     }
-    while (hud_question.firstChild){
+    while (hud_question.firstChild) {
         hud_question.removeChild(hud_question.firstChild);
     }
 }
 
-function randomProblem(){
-    var number = Math.round(Math.random() * (MAX_PROBLEM-1) ) + 1;
-    if (previousProblems.length == MAX_PROBLEM-1) {
+function randomProblem() {
+    var number = Math.round(Math.random() * (MAX_PROBLEM - 1)) + 1;
+    if (previousProblems.length == MAX_PROBLEM - 1) {
         console.log("all problem solved"); //TODO
     }
     while (previousProblems.includes(number)) {
-        number = Math.round(Math.random() * (MAX_PROBLEM-1) ) + 1;
+        number = Math.round(Math.random() * (MAX_PROBLEM - 1)) + 1;
     }
     console.log(number);
     clear();

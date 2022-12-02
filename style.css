@@ -253,6 +253,8 @@ body {
 .patient-talk-box {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     z-index: 99;
 }
 
@@ -281,4 +283,30 @@ body {
     color: white;
     font-family: 'Montserrat';
     text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.next {
+    backdrop-filter: blur(10px);
+    border: solid 3px rgb(0, 149, 175);
+    background-color: rgb(0, 149, 175, 0.7);
+    width: auto;
+    height: 35px;
+    padding: 0px 10px;
+    height: 35px;
+    border-radius: 20px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-family: 'Montserrat';
+    margin-top: 15px;
+    transition: all .5s;
+}
+
+.next:hover {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 1);
+    color: rgb(0, 149, 175);
 }
