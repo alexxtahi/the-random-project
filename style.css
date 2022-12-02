@@ -71,18 +71,6 @@ body {
     font-family: 'Japan Wave';
     font-weight: bolder;
     transition: all .5s;
-    animation-name: mainMenuBtnAnim;
-    animation-duration: 5s;
-    animation-delay: 3s;
-}
-
-@keyframes mainMenuBtnAnim {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 }
 
 .btn:hover {
@@ -94,4 +82,144 @@ body {
 .play-btn {
     font-size: 70px;
     text-shadow: 0px 5px 0px white;
+}
+
+.blurer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    background-color: rgba(150, 150, 150, 0.178);
+    z-index: 2;
+}
+
+.office-bg {
+    position: fixed;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #000000b6, #0000001f), no-repeat url("./assets/img/office-bg.jpg") center / cover;
+    z-index: 1;
+}
+
+.office-table {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    z-index: 3;
+}
+
+.hud-top {
+    position: fixed;
+    top: 20px;
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    z-index: 99;
+}
+
+.hud-btn {
+    width: 50px;
+    aspect-ratio: 1;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all .3s;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hud-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.hud-btn:active {
+    transform: scale(1);
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.hud-btn-text {
+    color: white;
+    font-weight: 600;
+    opacity: 0;
+    position: absolute;
+    bottom: -35px;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    transition: all .3s;
+}
+
+.hud-btn:hover .hud-btn-text {
+    opacity: 1;
+}
+
+.hud-btn-icon {
+    width: 40px;
+    aspect-ratio: 1;
+    margin: auto;
+    color-scheme: white;
+}
+
+.patient {
+    z-index: 2;
+    height: 90%;
+    position: absolute;
+    bottom: 0;
+    animation: 7s patientArriving;
+}
+
+@keyframes patientArriving {
+    from {
+        transform: translateX(-1366px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.hud-bottom {
+    position: fixed;
+    bottom: 20px;
+    display: flex;
+    width: 95%;
+    justify-content: space-around;
+    z-index: 99;
+}
+
+.answer-box {
+    width: 250px;
+    height: 150px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 30px;
+    box-shadow: 0px 15px 25px rgba(196, 80, 80, 0.2);
+    text-decoration: none;
+    transition: all .2s;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.answer-box:hover {
+    transform: scale(1.05);
+}
+
+.answer-box:focus {
+    border: solid 2px rgb(0, 149, 175);
+}
+
+.answer-box:focus .answer-box p {
+    color: white;
+}
+
+.answer-box p {
+    color: black;
+    font-family: 'Montserrat';
+    font-weight: 600;
 }
