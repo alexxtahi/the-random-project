@@ -63,7 +63,7 @@ function nextDialogue() {
     } else {
         const next = document.getElementsByClassName("next")[0];
         console.log(next);
-        hud_question.removeChild(next);
+        hud_question.firstChild.removeChild(next);
 
         etape++;
         loadStage(etape);
