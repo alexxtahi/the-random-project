@@ -3,6 +3,9 @@ const MAX_PROBLEM = 1;
 const answer_buttons = document.getElementsByClassName("answer_button");
 const next_buttons = document.getElementsByClassName("next_buttons");
 const parent = document.getElementsByClassName("interactions")[0];
+const hud_bottom = document.getElementsByClassName("hud-bottom")[0];
+const hud_question = document.getElementsByName("question-box")[0];
+
 
 var previousProblems = []; // une liste des problemes qui ont été rencontré
 
@@ -52,7 +55,7 @@ function nextDialogue() {
 function showText(data){
     if (data.doctor != undefined) {
         const newDiv = document.createElement("div");
-        newDiv.classList.add("dialogue_doctor");
+        newDiv.classList.add("question-box");
         newDiv.textContent = data.doctor;
         
         const buttonNext = document.createElement("a");
@@ -65,7 +68,7 @@ function showText(data){
     }
     else if (data.patient != undefined) {
         const newDiv = document.createElement("div");
-        newDiv.classList.add("dialogue_patient");
+        newDiv.classList.add("question-box");
         newDiv.textContent = data.patient;
         
         const buttonNext = document.createElement("a");
