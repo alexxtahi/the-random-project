@@ -6,6 +6,7 @@ const parent = document.getElementsByClassName("interactions")[0];
 const hud_bottom = document.getElementsByClassName("hud-bottom")[0];
 const hud_question = document.getElementsByClassName("patient-talk-box")[0];
 
+const scoreSpan = document.getElementsByClassName("score")[0].firstChild;
 
 var previousProblems = []; // une liste des problemes qui ont été rencontré
 
@@ -25,6 +26,9 @@ xmlhttp.send();
 if(xmlhttp.status==200){
     bigdata = JSON.parse(xmlhttp.responseText);
 }
+setTimeout(() => {
+    randomProblem();
+}, 5000);
 
 function loadProblem(id) {
     etape = 1;
@@ -133,13 +137,13 @@ function affichReponses(){
 
 function positiveScore() {
     score++;
-    console.log(score);
+    scoreSpan.textContent = score;
     
     affichReponses();
 }
 function negativeScore() {
     score--;
-    console.log(score);
+    scoreSpan.textContent = score;
 
     affichReponses();
 }
