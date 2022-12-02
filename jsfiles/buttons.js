@@ -63,10 +63,14 @@ function nextDialogue() {
     } else {
         const next = document.getElementsByClassName("next")[0];
         console.log(next);
-        hud_question.removeChild(next);
+        hud_question.firstChild.removeChild(next);
 
         etape++;
-        loadStage(etape);
+        if (dataProblem["etape" + etape] == undefined) {
+            randomProblem();
+        } else {
+            loadStage(etape);
+        }
     }
 }
 
@@ -118,9 +122,7 @@ function showButtons(data, correctButton) {
 
 function affichReponses() {
     const listnodes = hud_bottom.childNodes;
-    console.log(listnodes);
     listnodes.forEach(e => {
-        console.log(e);
         if (e.id == correct) {
             e.style.backgroundColor = "green";
         } else {
@@ -134,14 +136,14 @@ function affichReponses() {
 
 function positiveScore() {
     score++;
-    scoreSpan.textContent = score;
+    scoreSpan.textContent = "Score: " + score;
 
     affichReponses();
 }
 
 function negativeScore() {
     score--;
-    scoreSpan.textContent = score;
+    scoreSpan.textContent = "Score: " + score;
 
     affichReponses();
 }
@@ -170,11 +172,13 @@ function randomProblem() {
     if (previousProblems.length == MAX_PROBLEM - 1) {
         console.log("all problem solved"); //TODO
     }
-    while (previousProblems.includes(number)) {
-        number = Math.round(Math.random() * (MAX_PROBLEM - 1)) + 1;
+    else {
+        while (previousProblems.includes(number)) {
+            number = Math.round(Math.random() * (MAX_PROBLEM - 1)) + 1;
+        }
+        console.log(number);
+        clear();
+        loadProblem(number);
+        previousProblems.push(number);
     }
-    console.log(number);
-    clear();
-    loadProblem(number);
-    previousProblems.push(number);
 }
